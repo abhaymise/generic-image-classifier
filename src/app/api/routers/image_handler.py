@@ -61,6 +61,50 @@ async def process_image(
     - header: <Optional>
 
     - return: json
+
+    ### Metadata should have labels in which you want the image to be classified
+
+    Example :
+    to classify an image as `biryani`/`cake`/`other food`
+    metadata should be passed as
+    ``` json
+    {
+        "labels" : ["biryani","cake","other food"]
+    }
+    ```
+
+    ### Sample response :
+    ``` json
+    {
+      "id": "291cc06f-14d1-4e68-81b8-c38a96cc1b17",
+      "insight": {
+        "prediction": {
+          "label": "biryani",
+          "confidence": 0.35582542419433594
+        },
+        "other_predictions": [
+          {
+            "label": "biryani",
+            "confidence": 0.35582542419433594
+          },
+          {
+            "label": "other food",
+            "confidence": 0.32970619201660156
+          },
+          {
+            "label": "cake",
+            "confidence": 0.3144683241844177
+          }
+        ],
+        "model_name": "openai/clip-vit-base-patch32"
+      },
+      "image_height": 405,
+      "image_width": 540,
+      "status_code": 200,
+      "message": "success",
+      "created_at": "20241219::123844"
+    }
+    ```
     """
     request_id = str(uuid.uuid4())
     response = {}

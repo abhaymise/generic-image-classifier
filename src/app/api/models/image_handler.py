@@ -19,4 +19,4 @@ class Response(BaseModel):
     image_width : int
     status_code : int
     message : str
-    created_at : str = Field(datetime.utcnow().strftime("%Y%m%d  %HH%MM%SS"),description="response creation time")
+    created_at : str = Field(datetime.utcnow().strftime("%Y%m%d::%H%M%S"),description="response creation time")
